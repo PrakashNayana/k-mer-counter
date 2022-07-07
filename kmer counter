@@ -1,0 +1,22 @@
+#Open FASTA file
+TargetFile = open('sequenceA.fasta')
+readTF = TargetFile.read()
+#File assigned as target sequence
+Tseq="".join(readTF.split())
+#function definition
+def kmer_count(Tseq, k):
+    #Empty Dictionary
+    counts = {}
+    #number of k-mers of length k
+    number_of_kmers = len(Tseq) - k + 1
+    #Loop
+    for i in range(number_of_kmers):
+        #Slicing the string
+        kmer = Tseq[i:i+k]
+        #Add the k-mer to dictionary if not present
+        if kmer not in counts:
+            counts[kmer] = 0
+        counts[kmer] += 1
+    return counts
+
+kmer_count(Tseq,3)
